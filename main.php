@@ -8,7 +8,7 @@ use Moovin\Job\Backend;
 
 $caixaEletronico = new Backend\CaixaEletronico();
 
-$contaDeposito = readline('Número da conta para depósito: ');
+$contaDeposito = readline('Informe o número da sua conta para iniciar: ');
 $contaPrimaria = buscarConta($contaDeposito, $contasCadastradas);
 
 while ($contaPrimaria === null) {
@@ -27,6 +27,8 @@ $contaBancaria->setNumeroConta($contasCadastradas[$contaPrimaria]['numeroConta']
 $contaBancaria->setAgencia($contasCadastradas[$contaPrimaria]['agencia']);
 $contaBancaria->setTipoConta($contasCadastradas[$contaPrimaria]['tipoConta']);
 $contaBancaria->setSaldo($contasCadastradas[$contaPrimaria]['saldo']);
+
+echo 'Seja bem-vindo(a) ' . $contaBancaria->getNomeTitular() . '. O saldo atual da sua conta é de B$ ' . number_format($contaBancaria->getSaldo(), 2, ',', '.') . PHP_EOL;
 
 $valorDeposito = readline('Valor para depósito: ');
 while (!is_numeric($valorDeposito)) {

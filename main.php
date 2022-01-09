@@ -40,7 +40,7 @@ $deposito = $caixaEletronico->deposito($contaBancaria, $valorDeposito);
 if ($deposito['success'])
 	echo 'O saldo atualizado da sua conta bancária é de B$ ' . number_format($deposito['saldo'], 2, ',', '.') . PHP_EOL;
 else
-	echo 'Ocorreu um erro ao tentar realizar o depósito. Tente novamente mais tarde.' . PHP_EOL;
+	echo 'Ocorreu um erro ao tentar realizar o depósito. Tente novamente.' . PHP_EOL;
 
 $valorSaque = readline('Valor para saque: ');
 while (!is_numeric($valorSaque)) {
@@ -52,7 +52,7 @@ while (!is_numeric($valorSaque)) {
 $saque = $caixaEletronico->saque($contaBancaria, $valorSaque);
 
 if ($saque['success'])
-	echo 'Você realizou um saque de B$ ' . number_format($valorSaque, 2, ',', '.') . '. O saldo atualizado da sua conta bancária é de B$ ' . number_format($saque['saldo'], 2, ',', '.') . PHP_EOL;
+	echo 'Você realizou um saque de B$ ' . number_format($valorSaque, 2, ',', '.') . '. A taxa para essa operação é de B$ ' . number_format($contaBancaria->getTaxaOperacao($contaBancaria->getTipoConta()), 2, ',', '.') . ' e o saldo atualizado da sua conta bancária é de B$ ' . number_format($saque['saldo'], 2, ',', '.') . PHP_EOL;
 else
 	echo $saque['message'] . PHP_EOL;
 

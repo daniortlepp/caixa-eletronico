@@ -28,10 +28,10 @@ class CaixaEletronico {
      */
     public function saque($contaBancaria, $valor) {
         if (!$this->verificaSaldo($contaBancaria->getSaldo(), $valor))
-            return (['success' => false, 'message' => "Saldo insuficiente para realizar o saque"]);
+            return (['success' => false, 'message' => 'Saldo insuficiente para realizar o saque']);
 
        	if ($valor > $contaBancaria->getLimiteSaque($contaBancaria->getTipoConta()))
-        	return (['success' => false, 'message' => "O valor informado excedeu o limte de saque de sua conta"]);
+        	return (['success' => false, 'message' => 'O valor informado excedeu o limte de saque de sua conta que é de B$ ' . number_format($contaBancaria->getLimiteSaque($contaBancaria->getTipoConta()), 2, ',', '.')]);
 
         $saldoAtualizado = $contaBancaria->getSaldo() - $valor - $contaBancaria->getTaxaOperacao($contaBancaria->getTipoConta());
         $contaBancaria->setSaldo($saldoAtualizado);
@@ -46,7 +46,7 @@ class CaixaEletronico {
      */
     public function transferencia($contaBancaria, $contaDestino, $valor) {
         if (!$this->verificaSaldo($contaBancaria->getSaldo(), $valor))
-            return (['success' => false, 'message' => "Saldo insuficiente para realizar a transferência"]);
+            return (['success' => false, 'message' => 'Saldo insuficiente para realizar a transferência']);
 
        	$saldoAtualizado = $contaBancaria->getSaldo() - $valor;
         $contaBancaria->setSaldo($saldoAtualizado);

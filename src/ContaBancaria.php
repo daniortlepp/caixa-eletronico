@@ -73,15 +73,15 @@ class ContaBancaria {
 		$this->saldo = $saldo;
 	}
 
-	public function getLimiteSaque($tipoConta) {
-		if ($tipoConta == 'CC') return 600;
-		else if ($tipoConta == 'CP') return 1000;
+	public function getLimiteSaque() {
+		if ($this->tipoConta == 'CC') return 600;
+		else if ($this->tipoConta == 'CP') return 1000;
 		else return 0;
 	}
 
-	public function getTaxaOperacao($tipoConta) {
-		if ($tipoConta == 'CC') return 2.5;
-		else if ($tipoConta == 'CP') return 0.8;
+	public function getTaxaOperacao() {
+		if ($this->tipoConta == 'CC') return 2.5;
+		else if ($this->tipoConta == 'CP') return 0.8;
 		else return 0;
 	}
 	
@@ -98,8 +98,8 @@ class ContaBancaria {
 		$data['agencia'] = $this->getAgencia();
 		$data['tipoConta'] = $this->getTipoConta();
 		$data['saldo'] = $this->getSaldo();
-		$data['limiteSaque'] = $this->getLimiteSaque($this->getTipoConta());
-		$data['taxaOperacao'] = $this->getTaxaOperacao($this->getTipoConta());
+		$data['limiteSaque'] = $this->getLimiteSaque();
+		$data['taxaOperacao'] = $this->getTaxaOperacao();
 		
         return $data;
     }

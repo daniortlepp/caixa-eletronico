@@ -1,16 +1,16 @@
 <?php
 
-namespace Moovin\Job\Backend;
+namespace projetos\caixaeletronico;
 
 /**
- * Classe do Caixa EletrÙnico
+ * Classe do Caixa Eletr√¥nico
  *
  * @author Daniela Ortlepp <danyortlepp@gmail.com>
  */
 class CaixaEletronico {
 
     /**
-     * MÈtodo de depÛsito
+     * M√©todo de dep√≥sito
      *
      * @return json
      */
@@ -22,7 +22,7 @@ class CaixaEletronico {
     }
 
     /**
-     * MÈtodo de saque
+     * M√©todo de saque
      *
      * @return json
      */
@@ -31,22 +31,22 @@ class CaixaEletronico {
             return (['success' => false, 'message' => 'Saldo insuficiente para realizar o saque']);
 
        	if ($valor > $contaBancaria->getLimiteSaque($contaBancaria->getTipoConta()))
-        	return (['success' => false, 'message' => 'O valor informado excedeu o limte de saque de sua conta que È de B$ ' . number_format($contaBancaria->getLimiteSaque($contaBancaria->getTipoConta()), 2, ',', '.')]);
+        	return (['success' => false, 'message' => 'O valor informado excedeu o limte de saque de sua conta que √© de B$ ' . number_format($contaBancaria->getLimiteSaque(), 2, ',', '.')]);
 
-        $saldoAtualizado = $contaBancaria->getSaldo() - $valor - $contaBancaria->getTaxaOperacao($contaBancaria->getTipoConta());
+        $saldoAtualizado = $contaBancaria->getSaldo() - $valor - $contaBancaria->getTaxaOperacao();
         $contaBancaria->setSaldo($saldoAtualizado);
 
         return (['success' => true, 'saldo' => $contaBancaria->getSaldo()]);
    }
 
    /**
-     * MÈtodo de transferÍncia
+     * M√©todo de transfer√™ncia
      *
      * @return json
      */
     public function transferencia($contaBancaria, $contaDestino, $valor) {
         if (!$this->verificaSaldo($contaBancaria->getSaldo(), $valor))
-            return (['success' => false, 'message' => 'Saldo insuficiente para realizar a transferÍncia']);
+            return (['success' => false, 'message' => 'Saldo insuficiente para realizar a transfer√™ncia']);
 
        	$saldoAtualizado = $contaBancaria->getSaldo() - $valor;
         $contaBancaria->setSaldo($saldoAtualizado);
@@ -58,7 +58,7 @@ class CaixaEletronico {
     }
 
     /**
-     * FunÁ„o para verificar se a conta banc·ria tem saldo suficiente
+     * Fun√ß√£o para verificar se a conta banc√°ria tem saldo suficiente
      * 
      * @return boolean
      */

@@ -10,7 +10,7 @@ use projetos\caixaeletronico;
  * Teste unitário da classe Moovin\Job\Backend\CaixaEletronico
  */
 class CaixaEletronicoTest extends \PHPUnit_Framework_TestCase {
-    /** @var Backend\CaixaEletronico */
+    /** @var projetos\caixaeletronico */
     protected $contaBancaria;
     protected $contaDestino;
     protected $caixaEletronico;

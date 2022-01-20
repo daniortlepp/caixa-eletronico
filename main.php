@@ -3,10 +3,10 @@
 require_once __DIR__ . '/vendor/autoload.php';
 require_once 'dados.php';
 
-use Moovin\Job\Backend;
+use projetos\caixaeletronico;
 
 
-$caixaEletronico = new Backend\CaixaEletronico();
+$caixaEletronico = new caixaeletronico\CaixaEletronico();
 
 $contaDeposito = readline('Informe o número da sua conta para iniciar: ');
 $contaPrimaria = buscarConta($contaDeposito, $contasCadastradas);
@@ -19,7 +19,7 @@ while ($contaPrimaria === null) {
 	$contaPrimaria = buscarConta($contaDeposito, $contasCadastradas);
 }
 
-$contaBancaria = new Backend\ContaBancaria;
+$contaBancaria = new caixaeletronico\ContaBancaria;
 $contaBancaria->setId($contasCadastradas[$contaPrimaria]['id']);
 $contaBancaria->setNomeTitular($contasCadastradas[$contaPrimaria]['nomeTitular']);
 $contaBancaria->setCpfTitular($contasCadastradas[$contaPrimaria]['cpfTitular']);
@@ -69,7 +69,7 @@ while ($contaDestinatario === null) {
 	$contaDestinatario = buscarConta($contaTransferencia, $contasCadastradas);
 }
 
-$contaBancariaDestino = new Backend\ContaBancaria;
+$contaBancariaDestino = new caixaeletronico\ContaBancaria;
 $contaBancariaDestino->setId($contasCadastradas[$contaDestinatario]['id']);
 $contaBancariaDestino->setNomeTitular($contasCadastradas[$contaDestinatario]['nomeTitular']);
 $contaBancariaDestino->setCpfTitular($contasCadastradas[$contaDestinatario]['cpfTitular']);

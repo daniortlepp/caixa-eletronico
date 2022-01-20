@@ -1,13 +1,13 @@
 <?php
 
-namespace Moovin\Job\Backend\Tests;
+namespace projetos\caixaeletronico\tests;
 
 require_once 'dados.php';
 
-use Moovin\Job\Backend;
+use projetos\caixaeletronico;
 
 /**
- * Teste unitário da classe Moovin\Job\Backend\CaixaEletronico
+ * Teste unitÃ¡rio da classe Moovin\Job\Backend\CaixaEletronico
  */
 class CaixaEletronicoTest extends \PHPUnit_Framework_TestCase {
     /** @var Backend\CaixaEletronico */
@@ -19,16 +19,16 @@ class CaixaEletronicoTest extends \PHPUnit_Framework_TestCase {
      * {@inheritdoc}
      */
     protected function setUp() {
-        $this->contaBancaria = new Backend\ContaBancaria;
+        $this->contaBancaria = new caixaeletronico\ContaBancaria;
         $this->contaBancaria->setId(1);
-        $this->contaBancaria->setNomeTitular('João da Silva');
+        $this->contaBancaria->setNomeTitular('JoÃ£o da Silva');
         $this->contaBancaria->setCpfTitular('40451677900');
         $this->contaBancaria->setNumeroConta('44789963');
         $this->contaBancaria->setAgencia('0001');
         $this->contaBancaria->setTipoConta('CP');
         $this->contaBancaria->setSaldo(500);
 
-        $this->contaDestino = new Backend\ContaBancaria;
+        $this->contaDestino = new caixaeletronico\ContaBancaria;
         $this->contaDestino->setId(2);
         $this->contaDestino->setNomeTitular('Maria dos Santos');
         $this->contaDestino->setCpfTitular('65788942136');
@@ -37,7 +37,7 @@ class CaixaEletronicoTest extends \PHPUnit_Framework_TestCase {
         $this->contaDestino->setTipoConta('CC');
         $this->contaDestino->setSaldo(0);
 
-        $this->caixaEletronico = new Backend\CaixaEletronico();
+        $this->caixaEletronico = new caixaeletronico\CaixaEletronico();
     }
 
     public function testDeposito() {
@@ -49,7 +49,7 @@ class CaixaEletronicoTest extends \PHPUnit_Framework_TestCase {
      * @covers Moovin\Job\Backend\CaixaEletronico::taxaOperacao
      */
     public function testTaxaOperacao() {
-        $this->assertEquals(0.8, $this->contaBancaria->getTaxaOperacao($this->contaBancaria->getTipoConta())); 
+        $this->assertEquals(0.8, $this->contaBancaria->getTaxaOperacao()); 
     }
 
     /**

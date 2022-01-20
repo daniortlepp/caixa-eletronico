@@ -1,18 +1,18 @@
 <?php
 
-namespace Moovin\Job\Backend;
+namespace projetos\caixaeletronico;
 
 /**
- * Classe Conta Banc·ria
+ * Classe Conta Banc√°ria
  *
  * @author Daniela Ortlepp <danyortlepp@gmail.com>
  */
 class ContaBancaria {
 	
 	protected	$id;			/** integer */
-	protected   $nomeTitular;	/** string */
-	protected 	$cpfTitular;	/** string */
-	protected   $numeroConta;	/** string */
+	protected   	$nomeTitular;		/** string */
+	protected 	$cpfTitular;		/** string */
+	protected   	$numeroConta;		/** string */
 	protected	$agencia;		/** string */
 	protected	$tipoConta;		/** string */
 	protected	$saldo;			/** float */
@@ -86,7 +86,7 @@ class ContaBancaria {
 	}
 	
     /**
-     * MÈtodo de retorno dos dados da conta banc·ria
+     * M√©todo de retorno dos dados da conta banc√°ria
      *
      * @return array
      */
